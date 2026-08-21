@@ -1,6 +1,6 @@
 /* ==========================================================================
-   LA KOVA — Dripping Architectural Typography Styling
-   Exact replica of the footer "BORING" stem-elongation and letter-dripping effect
+   LA KOVA — Luxury Editorial Typography & Drip Engine
+   Left-Aligned Project Card + Isolated "O" Full Archway Drip + Subtle "V" Drop
    ========================================================================== */
 
 :root {
@@ -32,6 +32,7 @@ html {
   color: var(--text-dark);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -40,7 +41,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Cursor & Fixed Chrome
+   Cursor & Header
    -------------------------------------------------------------------------- */
 .custom-cursor {
   position: fixed;
@@ -244,10 +245,10 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   THE DRIPPING / STRETCHING FOOTER SECTION
+   THE DRIPPING FOOTER SECTION
    -------------------------------------------------------------------------- */
 .footer-drip-section {
-  min-height: 220vh; /* Extended scroll track for scrubbing the drip */
+  min-height: 240vh; /* Smooth track for scrubbing the drip */
   width: 100%;
   position: relative;
   background-color: var(--bg-primary);
@@ -261,60 +262,30 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--gutter) 0;
 }
 
-.drip-svg-canvas {
+/* FEATURED PROJECT CARD ON THE LEFT SIDE */
+.featured-project-card.left-card {
   position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* SVG Letter Parts */
-.letter-part {
-  transform-box: fill-box;
-}
-
-.top-cap {
-  /* Anchored at top of each letter */
-  transform-origin: top center;
-}
-
-.stem {
-  /* Stems scale down on Y axis from their top origin */
-  transform-origin: top center;
-  will-change: transform, height;
-}
-
-.bottom-drop {
-  /* Bottom feet/curves drop downward */
-  will-change: transform;
-}
-
-/* Featured Project Card (Reveals on right side as letters stretch) */
-.featured-project-card {
-  position: absolute;
-  top: 22%;
-  right: 8vw;
-  width: clamp(320px, 32vw, 550px);
-  z-index: 20;
+  top: 12%;
+  left: 5vw;
+  width: clamp(280px, 28vw, 480px);
+  z-index: 40;
   opacity: 0;
-  transform: translateY(40px) scale(0.95);
+  transform: translateY(40px) scale(0.96);
   will-change: transform, opacity;
   pointer-events: auto;
 }
 
 .project-year {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.15em;
   opacity: 0.6;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .project-image-wrap {
@@ -322,8 +293,8 @@ body {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 4px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
 }
 
 .project-img {
@@ -335,18 +306,105 @@ body {
 
 .project-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 2.8vw, 3.2rem);
+  font-size: clamp(1.6rem, 2.4vw, 2.8rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .project-subtitle {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   THE SEAMLESS "LA KOVA" TYPOGRAPHY CONTAINER
+   -------------------------------------------------------------------------- */
+.kova-hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(5.5rem, 15vw, 19rem);
+  line-height: 0.75;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+  user-select: none;
+  position: relative;
+  z-index: 20;
+  margin-bottom: -0.02em;
+}
+
+.kova-word {
+  display: inline-flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+
+.word-la {
+  gap: 0.04em;
+  margin-right: 0.12em;
+}
+
+.word-kova {
+  gap: 0.04em;
+}
+
+/* Static, Authentic Font Letters (L, A, K, A) */
+.static-letter {
+  display: inline-block;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 900;
+  transform: translateY(0);
+}
+
+/* Morphing / Dripping Letter Box Containers (O, V) */
+.drip-letter-box {
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  vertical-align: baseline;
+}
+
+.letter-o-box {
+  width: 0.88em;
+  height: 0.75em;
+}
+
+.letter-v-box {
+  width: 0.84em;
+  height: 0.75em;
+}
+
+.drip-letter-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 350%; /* Allows deep extension down to the screen edge */
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Solid Fill with Zero Raster Seams */
+.letter-fill {
+  fill: #0D0D0D;
+  shape-rendering: geometricPrecision;
+}
+
+/* Stems scale down on Y axis from their top anchor */
+.o-stem, .v-stem {
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.o-drop-group, .v-drop-group {
+  will-change: transform;
 }
 
 /* --------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 /**
- * LA KOVA — Dripping Architectural Typography Engine
- * Exact recreation of the footer letter-stretching & stem-morphing effect
+ * LA KOVA — Dripping Typography Engine
+ * Left Project Card + Isolated "O" Archway Drip + Subtle "V" Drop
  */
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,7 +11,7 @@ let dripTimeline;
 // 1. Lenis Smooth Scroll Setup
 function initSmoothScroll() {
   lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.25,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true
   });
@@ -44,7 +44,7 @@ function initCustomCursor() {
     ySet(pos.y);
   });
 
-  document.querySelectorAll('.expand-target, .pill-btn').forEach((el) => {
+  document.querySelectorAll('.expand-target, .pill-btn, .project-image-wrap').forEach((el) => {
     el.addEventListener('mouseenter', () => {
       cursorText.textContent = el.getAttribute('data-text') || 'View';
       cursorText.style.opacity = '1';
@@ -68,67 +68,70 @@ function initIntro() {
   });
 }
 
-// 4. THE MASTER DRIPPING & STRETCHING LETTER ENGINE
+// 4. THE MASTER DRIP ENGINE (ISOLATED TO "O" & SUBTLE "V")
 function initDripLetterEngine() {
   const dripSection = document.getElementById('drip-footer-section');
   
   // Mathematical calibration:
-  // Stems with height 180px scaled by 4.2x expand downward by: 180 * (4.2 - 1) = 576px
-  const dropDelta = 576;
-  const standardStemScale = 4.2;
-  const oStemScale = 5.8; // (120px * 4.8 = 576px)
+  // "O" Column height = 125px. At scaleY = 6.2, delta = 125 * 5.2 = 650px.
+  const oDropDelta = 650;
+  const oStemScale = 6.2;
 
-  // Master Drip Scrubbed Timeline
+  // "V" Leg height = 325px. At scaleY = 1.5, delta = 325 * 0.5 = 162px.
+  const vDropDelta = 162;
+  const vStemScale = 1.5;
+
+  // Master Drip Scrub Timeline
   dripTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: dripSection,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1, // Fluid scroll synchronization
+      scrub: 1.1, // Smooth inertia scrub
       invalidateOnRefresh: true
     }
   });
 
-  // A. Stretch All Standard 180px Vertical Stems Downward
-  dripTimeline.to('.stem-l, .stem-a1-left, .stem-a1-right, .stem-k, .stem-k-leg, .stem-v-left, .stem-v-right, .stem-a2-left, .stem-a2-right', {
-    scaleY: standardStemScale,
-    transformOrigin: 'top center',
-    ease: 'none',
-    duration: 1
-  }, 0);
-
-  // B. Stretch the "O" Arch Columns (120px base) to match 576px drop
-  dripTimeline.to('.stem-o-left, .stem-o-right', {
+  // A. Stretch the "O" Vertical Arch Columns (Full Drip)
+  dripTimeline.to('.o-stem-left, .o-stem-right', {
     scaleY: oStemScale,
     transformOrigin: 'top center',
     ease: 'none',
     duration: 1
   }, 0);
 
-  // C. Drop Bottom Feet, Curves & Serifs in Perfect Mathematical Lockstep
-  dripTimeline.to('.drop-l, .drop-a1, .drop-k-stem, .drop-k-leg, .drop-o, .drop-v, .drop-a2', {
-    y: dropDelta,
+  // B. Drop the "O" Bottom Arch Cap in Lockstep
+  dripTimeline.to('#oDropGroup', {
+    y: oDropDelta,
     ease: 'none',
     duration: 1
   }, 0);
 
-  // D. Slide Crossbars (at half distance for optical balance)
-  dripTimeline.to('.drop-a1-bar, .drop-a2-bar', {
-    y: dropDelta * 0.45,
+  // C. Stretch the "V" Legs (Subtle Drip)
+  dripTimeline.to('.v-stem-left, .v-stem-right', {
+    scaleY: vStemScale,
+    transformOrigin: 'top center',
     ease: 'none',
     duration: 1
   }, 0);
 
-  // E. Reveal Featured Project Card ("LA SOLANA") as letters open up the frame (matching Screenshot 5)
+  // D. Drop the "V" Bottom Vertex (Subtle Drip)
+  dripTimeline.to('#vDropGroup', {
+    y: vDropDelta,
+    ease: 'none',
+    duration: 1
+  }, 0);
+
+  // E. Reveal the Left-Aligned Featured Project Card ("LA SOLANA")
   dripTimeline.fromTo('#projectCard', 
-    { opacity: 0, y: 50, scale: 0.94 },
+    { opacity: 0, y: 45, scale: 0.95 },
     {
       opacity: 1,
       y: 0,
       scale: 1,
-      duration: 0.4,
+      duration: 0.45,
       ease: 'power2.out'
-    }, 0.55 // Triggers halfway through the stretch
+    }, 0.35 // Fades in smoothly as O begins to drip
   );
 }
 
@@ -141,17 +144,26 @@ function initControls() {
   dripReplay.addEventListener('click', () => {
     document.getElementById('drip-footer-section').scrollIntoView({ behavior: 'smooth' });
     
-    gsap.fromTo('.stem-part', 
+    // Play full bounce drip
+    gsap.fromTo('.o-stem-left, .o-stem-right', 
       { scaleY: 1 }, 
-      { scaleY: 4.2, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+      { scaleY: 6.2, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
     );
-    gsap.fromTo('.drop-part', 
+    gsap.fromTo('#oDropGroup', 
       { y: 0 }, 
-      { y: 576, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+      { y: 650, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+    );
+    gsap.fromTo('.v-stem-left, .v-stem-right', 
+      { scaleY: 1 }, 
+      { scaleY: 1.5, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+    );
+    gsap.fromTo('#vDropGroup', 
+      { y: 0 }, 
+      { y: 162, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
     );
     gsap.fromTo('#projectCard',
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.2, delay: 0.6, yoyo: true, repeat: 1 }
+      { opacity: 0, y: 45 },
+      { opacity: 1, y: 0, duration: 1.2, delay: 0.4, yoyo: true, repeat: 1 }
     );
   });
 
@@ -160,12 +172,13 @@ function initControls() {
     const isDark = document.body.classList.toggle('dark-theme');
     if (isDark) {
       document.body.style.backgroundColor = '#0D0D0D';
-      document.querySelectorAll('.drip-fill').forEach(p => p.setAttribute('fill', '#ECE4DA'));
-      document.querySelectorAll('.site-header, .fixed-watermark').forEach(el => el.style.color = '#ECE4DA');
+      document.querySelectorAll('.letter-fill').forEach(p => p.setAttribute('fill', '#ECE4DA'));
+      document.querySelectorAll('.static-letter, .site-header, .fixed-watermark').forEach(el => el.style.color = '#ECE4DA');
       document.querySelector('.footer-drip-section').style.backgroundColor = '#0D0D0D';
     } else {
       document.body.style.backgroundColor = '#ECE4DA';
-      document.querySelectorAll('.drip-fill').forEach(p => p.setAttribute('fill', '#0D0D0D'));
+      document.querySelectorAll('.letter-fill').forEach(p => p.setAttribute('fill', '#0D0D0D'));
+      document.querySelectorAll('.static-letter, .site-header, .fixed-watermark').forEach(el => el.style.color = '#0D0D0D');
       document.querySelector('.footer-drip-section').style.backgroundColor = '#ECE4DA';
     }
   });
