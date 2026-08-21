@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LA KOVA — Dripping Typography (Left Image + O Drip)</title>
+  <title>LA KOVA — Dripping Architectural Typography</title>
   
-  <!-- Authentic Editorial Serif Fonts: Bodoni Moda & Cormorant Garamond -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -45,10 +45,10 @@
             <span class="line-mask"><span class="reveal-line italic">LO ORDINARIO</span></span>
           </h2>
           <p class="intro-description">
-            Scroll down to the footer to watch the uppercase <strong>O</strong> in <strong>LA KOVA</strong> physically elongate and drip down into a towering Roman archway, while the featured project card reveals on the left.
+            Scroll down into the footer to watch the letter <strong>O</strong> in <strong>LA KOVA</strong> physically elongate and drip down into a giant Roman archway, while the featured project card reveals on the left.
           </p>
           <div class="scroll-prompt">
-            <span class="prompt-text">SCROLL DOWN TO THE FOOTER</span>
+            <span class="prompt-text">SCROLL TO EXPERIENCE THE DRIP</span>
             <div class="scroll-arrow">↓</div>
           </div>
         </div>
@@ -70,7 +70,7 @@
         </div>
       </section>
 
-      <!-- SECTION 3: THE DRIPPING "LA KOVA" FOOTER SECTION -->
+      <!-- SECTION 3: THE MASTER DRIPPING "LA KOVA" FOOTER SECTION -->
       <section class="section footer-drip-section bg-beige" id="drip-footer-section">
         <div class="footer-drip-wrapper">
           
@@ -86,58 +86,86 @@
             </div>
           </div>
 
-          <!-- THE SEAMLESS "LA KOVA" TYPOGRAPHY CONTAINER -->
-          <div class="kova-hero-container">
-            
-            <div class="kova-word word-la">
-              <span class="static-letter">L</span>
-              <span class="static-letter">A</span>
-            </div>
+          <!-- UNIFIED HIGH-FASHION VECTOR CANVAS FOR "LA KOVA" -->
+          <!-- All 6 letters are in pure, calibrated vector coordinates for 100% pixel perfection -->
+          <div class="kova-svg-wrap">
+            <svg class="kova-master-svg" viewBox="0 0 1920 1100" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <style>
+                  .k-fill { fill: #0D0D0D; }
+                  .k-stem { transform-origin: top center; will-change: transform; }
+                  .k-drop { will-change: transform; }
+                </style>
+              </defs>
 
-            <div class="kova-word word-kova">
-              <span class="static-letter">K</span>
-              
-              <!-- THE DRIPPING UPPERCASE "O" (Archway Portal with 4px overlap to eliminate any seam line) -->
-              <div class="drip-letter-box letter-o-box" id="dripOBox">
-                <svg class="drip-letter-svg" viewBox="0 0 400 1200" preserveAspectRatio="xMidYMin meet">
-                  <!-- Upper Arch Cap (Anchored at Cap-Height) -->
-                  <path class="letter-fill o-top" d="M200,10 C90,10 10,75 10,185 L105,185 C105,125 145,85 200,85 C255,85 295,125 295,185 L390,185 C390,75 310,10 200,10 Z"/>
-                  
-                  <!-- Left Vertical Column (Stretches smoothly with 4px overlap) -->
-                  <rect class="letter-fill o-stem o-stem-left" x="10" y="180" width="95" height="125"/>
-                  
-                  <!-- Right Vertical Column (Stretches smoothly with 4px overlap) -->
-                  <rect class="letter-fill o-stem o-stem-right" x="295" y="180" width="95" height="125"/>
-                  
-                  <!-- Lower Arch Cap (Drops all the way to the bottom floor) -->
-                  <g class="o-drop-group" id="oDropGroup">
-                    <path class="letter-fill o-bottom" d="M10,300 C10,410 90,475 200,475 C310,475 390,410 390,300 L295,300 C295,360 255,400 200,400 C145,400 105,360 105,300 Z"/>
-                  </g>
-                </svg>
-              </div>
+              <!-- ================= 1. LETTER: L ================= -->
+              <g class="letter-L" id="g_L">
+                <path class="k-fill" d="M120,110 L220,110 L220,130 L195,130 L195,150 L145,150 L145,130 L120,130 Z"/>
+                <rect class="k-fill" x="145" y="150" width="50" height="290"/>
+                <path class="k-fill" d="M120,440 L145,440 L145,460 L280,460 L280,410 L300,410 L300,460 L120,460 Z"/>
+              </g>
 
-              <!-- THE SUBTLE DRIP UPPERCASE "V" -->
-              <div class="drip-letter-box letter-v-box" id="dripVBox">
-                <svg class="drip-letter-svg" viewBox="0 0 380 1200" preserveAspectRatio="xMidYMin meet">
-                  <!-- Top Left & Right Serifs -->
-                  <path class="letter-fill" d="M10,15 L130,15 L130,45 L105,45 L75,80 L15,80 L35,45 L10,45 Z"/>
-                  <path class="letter-fill" d="M250,15 L370,15 L370,45 L345,45 L295,80 L235,80 L275,45 L250,45 Z"/>
-                  
-                  <!-- Left Heavy Stem (Stretches moderately) -->
-                  <polygon class="letter-fill v-stem v-stem-left" points="40,65 125,65 235,390 175,390"/>
-                  <!-- Right Hairline Stem (Stretches moderately) -->
-                  <polygon class="letter-fill v-stem v-stem-right" points="290,65 340,65 240,390 205,390"/>
-                  
-                  <!-- Bottom Vertex (Drops down moderately) -->
-                  <g class="v-drop-group" id="vDropGroup">
-                    <polygon class="letter-fill" points="175,385 240,385 205,475"/>
-                  </g>
-                </svg>
-              </div>
+              <!-- ================= 2. LETTER: A (First) ================= -->
+              <g class="letter-A1" id="g_A1">
+                <polygon class="k-fill" points="450,110 490,110 505,150 435,150"/>
+                <polygon class="k-fill" points="435,150 455,150 365,440 345,440"/>
+                <polygon class="k-fill" points="485,150 505,150 580,440 550,440"/>
+                <rect class="k-fill" x="395" y="340" width="145" height="20"/>
+                <polygon class="k-fill" points="330,440 380,440 380,460 330,460"/>
+                <polygon class="k-fill" points="540,440 595,440 595,460 540,460"/>
+              </g>
 
-              <span class="static-letter">A</span>
-            </div>
+              <!-- ================= 3. LETTER: K ================= -->
+              <g class="letter-K" id="g_K">
+                <path class="k-fill" d="M645,110 L745,110 L745,130 L720,130 L720,150 L670,150 L670,130 L645,130 Z"/>
+                <rect class="k-fill" x="670" y="150" width="50" height="290"/>
+                <path class="k-fill" d="M645,440 L670,440 L670,460 L745,460 L745,440 L720,440 L720,460 L645,460 Z"/>
+                <polygon class="k-fill" points="720,270 830,110 880,110 880,135 765,295"/>
+                <polygon class="k-fill" points="750,280 790,280 880,440 840,440"/>
+                <polygon class="k-fill" points="825,440 890,440 890,460 825,460"/>
+              </g>
 
+              <!-- ================= 4. LETTER: O (THE HERO FULL DRIP) ================= -->
+              <g class="letter-O" id="g_O">
+                <!-- Upper Arch Cap (Anchored at Cap-Height) -->
+                <path class="k-fill o-top" d="M1100,110 C990,110 940,165 940,245 L1015,245 C1015,195 1050,160 1100,160 C1150,160 1185,195 1185,245 L1260,245 C1260,165 1210,110 1100,110 Z"/>
+                
+                <!-- Left Vertical Column (Stretches Down smoothly with 5px overlap) -->
+                <rect class="k-fill k-stem o-stem-left" x="940" y="240" width="75" height="155"/>
+                
+                <!-- Right Vertical Column (Stretches Down smoothly with 5px overlap) -->
+                <rect class="k-fill k-stem o-stem-right" x="1185" y="240" width="75" height="155"/>
+                
+                <!-- Lower Arch Cap (Drops all the way to the bottom floor) -->
+                <g class="k-drop" id="oDropGroup">
+                  <path class="k-fill o-bottom" d="M940,390 C940,470 990,510 1100,510 C1210,510 1260,470 1260,390 L1185,390 C1185,425 1150,460 1100,460 C1050,460 1015,425 1015,390 Z"/>
+                </g>
+              </g>
+
+              <!-- ================= 5. LETTER: V (SUBTLE DRIP) ================= -->
+              <g class="letter-V" id="g_V">
+                <path class="k-fill" d="M1320,110 L1410,110 L1410,130 L1385,130 L1360,150 L1320,150 L1345,130 L1320,130 Z"/>
+                <path class="k-fill" d="M1490,110 L1580,110 L1580,130 L1555,130 L1515,150 L1475,150 L1505,130 L1490,130 Z"/>
+                
+                <polygon class="k-fill k-stem v-stem-left" points="1360,150 1410,150 1485,410 1445,410"/>
+                <polygon class="k-fill k-stem v-stem-right" points="1515,150 1545,150 1485,410 1465,410"/>
+                
+                <g class="k-drop" id="vDropGroup">
+                  <polygon class="k-fill" points="1445,405 1485,405 1465,465"/>
+                </g>
+              </g>
+
+              <!-- ================= 6. LETTER: A (Second) ================= -->
+              <g class="letter-A2" id="g_A2">
+                <polygon class="k-fill" points="1750,110 1790,110 1805,150 1735,150"/>
+                <polygon class="k-fill" points="1735,150 1755,150 1665,440 1645,440"/>
+                <polygon class="k-fill" points="1785,150 1805,150 1880,440 1850,440"/>
+                <rect class="k-fill" x="1695" y="340" width="145" height="20"/>
+                <polygon class="k-fill" points="1630,440 1680,440 1680,460 1630,460"/>
+                <polygon class="k-fill" points="1840,440 1895,440 1895,460 1840,460"/>
+              </g>
+
+            </svg>
           </div>
 
         </div>
@@ -146,7 +174,7 @@
     </main>
   </div>
 
-  <!-- Interactive Controls Toolbar -->
+  <!-- Interactive Control Toolbar -->
   <aside class="control-panel">
     <div class="panel-header">DRIP & MORPH CONTROLS</div>
     <div class="control-group">
@@ -155,7 +183,7 @@
     </div>
   </aside>
 
-  <!-- External Script Dependencies -->
+  <!-- External Script Dependencies (Loaded with Fallback Handling) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>

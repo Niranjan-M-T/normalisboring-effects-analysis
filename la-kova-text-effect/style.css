@@ -262,16 +262,15 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--gutter) 0;
+  align-items: flex-end;
+  padding: 0;
 }
 
 /* FEATURED PROJECT CARD ON THE LEFT SIDE */
 .featured-project-card.left-card {
   position: absolute;
   top: 12%;
-  left: 5vw;
+  left: 6vw;
   width: clamp(280px, 28vw, 480px);
   z-index: 40;
   opacity: 0;
@@ -321,89 +320,38 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   THE SEAMLESS "LA KOVA" TYPOGRAPHY CONTAINER
+   THE UNIFIED SVG MASTER CANVAS FOR "LA KOVA"
    -------------------------------------------------------------------------- */
-.kova-hero-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-  font-family: 'Bodoni Moda', Georgia, serif;
-  font-weight: 900;
-  font-size: clamp(5.5rem, 15vw, 19rem);
-  line-height: 0.75;
-  letter-spacing: -0.02em;
-  color: #0D0D0D;
-  user-select: none;
-  position: relative;
-  z-index: 20;
-  margin-bottom: -0.02em;
-}
-
-.kova-word {
-  display: inline-flex;
-  align-items: flex-end;
-  white-space: nowrap;
-}
-
-.word-la {
-  gap: 0.04em;
-  margin-right: 0.12em;
-}
-
-.word-kova {
-  gap: 0.04em;
-}
-
-/* Static, Authentic Font Letters (L, A, K, A) */
-.static-letter {
-  display: inline-block;
-  font-family: 'Bodoni Moda', Georgia, serif;
-  font-weight: 900;
-  transform: translateY(0);
-}
-
-/* Morphing / Dripping Letter Box Containers (O, V) */
-.drip-letter-box {
-  display: inline-block;
-  position: relative;
-  overflow: visible;
-  vertical-align: baseline;
-}
-
-.letter-o-box {
-  width: 0.88em;
-  height: 0.75em;
-}
-
-.letter-v-box {
-  width: 0.84em;
-  height: 0.75em;
-}
-
-.drip-letter-svg {
+.kova-svg-wrap {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 350%; /* Allows deep extension down to the screen edge */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.kova-master-svg {
+  width: 100vw;
+  height: 100vh;
   overflow: visible;
   pointer-events: none;
 }
 
-/* Solid Fill with Zero Raster Seams */
-.letter-fill {
+.k-fill {
   fill: #0D0D0D;
   shape-rendering: geometricPrecision;
 }
 
-/* Stems scale down on Y axis from their top anchor */
-.o-stem, .v-stem {
+.k-stem {
   transform-origin: top center;
   will-change: transform;
 }
 
-.o-drop-group, .v-drop-group {
+.k-drop {
   will-change: transform;
 }
 

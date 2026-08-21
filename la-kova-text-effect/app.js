@@ -1,6 +1,6 @@
 /**
  * LA KOVA — Dripping Typography Engine
- * Left Project Card + Isolated "O" Archway Drip + Subtle "V" Drop
+ * Left Project Card + Unified Vector Canvas + Isolated "O" Full Archway Drip
  */
 
 gsap.registerPlugin(ScrollTrigger);
@@ -8,17 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 let lenis;
 let dripTimeline;
 
-// 1. Lenis Smooth Scroll Setup
+// 1. Lenis Smooth Scroll with Safe Fallback
 function initSmoothScroll() {
-  lenis = new Lenis({
-    duration: 1.25,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true
-  });
+  try {
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.25,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true
+      });
 
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => lenis.raf(time * 1000));
-  gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+  } catch (err) {
+    console.warn('Lenis fallback active: using native smooth scroll', err);
+  }
 }
 
 // 2. Custom Magnetic Cursor
@@ -73,12 +79,12 @@ function initDripLetterEngine() {
   const dripSection = document.getElementById('drip-footer-section');
   
   // Mathematical calibration:
-  // "O" Column height = 125px. At scaleY = 6.2, delta = 125 * 5.2 = 650px.
-  const oDropDelta = 650;
-  const oStemScale = 6.2;
+  // "O" Column height = 155px. At scaleY = 5.2, drop delta = 155 * (5.2 - 1) = 651px.
+  const oDropDelta = 651;
+  const oStemScale = 5.2;
 
-  // "V" Leg height = 325px. At scaleY = 1.5, delta = 325 * 0.5 = 162px.
-  const vDropDelta = 162;
+  // "V" Stem height = 260px. At scaleY = 1.5, drop delta = 260 * 0.5 = 130px.
+  const vDropDelta = 130;
   const vStemScale = 1.5;
 
   // Master Drip Scrub Timeline
@@ -147,11 +153,11 @@ function initControls() {
     // Play full bounce drip
     gsap.fromTo('.o-stem-left, .o-stem-right', 
       { scaleY: 1 }, 
-      { scaleY: 6.2, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+      { scaleY: 5.2, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
     );
     gsap.fromTo('#oDropGroup', 
       { y: 0 }, 
-      { y: 650, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+      { y: 651, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
     );
     gsap.fromTo('.v-stem-left, .v-stem-right', 
       { scaleY: 1 }, 
@@ -159,7 +165,7 @@ function initControls() {
     );
     gsap.fromTo('#vDropGroup', 
       { y: 0 }, 
-      { y: 162, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
+      { y: 130, duration: 1.8, ease: 'power2.inOut', yoyo: true, repeat: 1 }
     );
     gsap.fromTo('#projectCard',
       { opacity: 0, y: 45 },
@@ -172,13 +178,13 @@ function initControls() {
     const isDark = document.body.classList.toggle('dark-theme');
     if (isDark) {
       document.body.style.backgroundColor = '#0D0D0D';
-      document.querySelectorAll('.letter-fill').forEach(p => p.setAttribute('fill', '#ECE4DA'));
-      document.querySelectorAll('.static-letter, .site-header, .fixed-watermark').forEach(el => el.style.color = '#ECE4DA');
+      document.querySelectorAll('.k-fill').forEach(p => p.setAttribute('fill', '#ECE4DA'));
+      document.querySelectorAll('.site-header, .fixed-watermark').forEach(el => el.style.color = '#ECE4DA');
       document.querySelector('.footer-drip-section').style.backgroundColor = '#0D0D0D';
     } else {
       document.body.style.backgroundColor = '#ECE4DA';
-      document.querySelectorAll('.letter-fill').forEach(p => p.setAttribute('fill', '#0D0D0D'));
-      document.querySelectorAll('.static-letter, .site-header, .fixed-watermark').forEach(el => el.style.color = '#0D0D0D');
+      document.querySelectorAll('.k-fill').forEach(p => p.setAttribute('fill', '#0D0D0D'));
+      document.querySelectorAll('.site-header, .fixed-watermark').forEach(el => el.style.color = '#0D0D0D');
       document.querySelector('.footer-drip-section').style.backgroundColor = '#ECE4DA';
     }
   });
