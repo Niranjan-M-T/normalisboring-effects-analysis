@@ -1,0 +1,397 @@
+/* ==========================================================================
+   LA KOVA — Dripping Architectural Typography Styling
+   Exact replica of the footer "BORING" stem-elongation and letter-dripping effect
+   ========================================================================== */
+
+:root {
+  --bg-primary: #ECE4DA;
+  --bg-dark: #0D0D0D;
+  --text-dark: #0D0D0D;
+  --text-light: #ECE4DA;
+  --text-muted: rgba(13, 13, 13, 0.6);
+
+  --font-serif: 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-italic: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Syne', var(--font-sans);
+
+  --gutter: clamp(1.5rem, 4vw, 5rem);
+  --radius-pill: 9999px;
+  --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Cursor & Fixed Chrome
+   -------------------------------------------------------------------------- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  background-color: #FFFFFF;
+}
+
+.cursor-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 500;
+  mix-blend-mode: difference;
+  color: #FFFFFF;
+}
+
+.header-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pill-btn {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.pill-btn:hover {
+  transform: scale(1.04);
+}
+
+.fixed-watermark {
+  position: fixed;
+  bottom: 2.2rem;
+  right: var(--gutter);
+  z-index: 500;
+  mix-blend-mode: difference;
+  color: #FFFFFF;
+  pointer-events: none;
+}
+
+.watermark-inner {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+.section {
+  width: 100%;
+  position: relative;
+}
+
+.bg-beige {
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Intro Section */
+.intro-section {
+  min-height: 80vh;
+  padding-top: 14rem;
+  padding-bottom: 6rem;
+}
+
+.eyebrow-tag {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+
+.sub-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6.5vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.reveal-line {
+  display: block;
+  transform: translateY(110%);
+}
+
+.italic {
+  font-family: var(--font-italic);
+  font-style: italic;
+}
+
+.intro-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 580px;
+  color: var(--text-muted);
+  margin-bottom: 3.5rem;
+}
+
+.scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  opacity: 0.4;
+}
+
+/* Transition Section */
+.transition-section {
+  padding: 6rem var(--gutter) 8rem;
+}
+
+.pill-wrap {
+  margin-bottom: 3rem;
+}
+
+.large-pill {
+  padding: 1.25rem 3.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+  letter-spacing: 0.05em;
+}
+
+.meta-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.meta-sep {
+  opacity: 0.3;
+}
+
+/* --------------------------------------------------------------------------
+   THE DRIPPING / STRETCHING FOOTER SECTION
+   -------------------------------------------------------------------------- */
+.footer-drip-section {
+  min-height: 220vh; /* Extended scroll track for scrubbing the drip */
+  width: 100%;
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+.footer-drip-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.drip-svg-canvas {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* SVG Letter Parts */
+.letter-part {
+  transform-box: fill-box;
+}
+
+.top-cap {
+  /* Anchored at top of each letter */
+  transform-origin: top center;
+}
+
+.stem {
+  /* Stems scale down on Y axis from their top origin */
+  transform-origin: top center;
+  will-change: transform, height;
+}
+
+.bottom-drop {
+  /* Bottom feet/curves drop downward */
+  will-change: transform;
+}
+
+/* Featured Project Card (Reveals on right side as letters stretch) */
+.featured-project-card {
+  position: absolute;
+  top: 22%;
+  right: 8vw;
+  width: clamp(320px, 32vw, 550px);
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+
+.project-year {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.project-image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.8vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.project-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Controls
+   -------------------------------------------------------------------------- */
+.control-panel {
+  position: fixed;
+  bottom: 2rem;
+  left: var(--gutter);
+  z-index: 600;
+  background: rgba(13, 13, 13, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  color: #FFFFFF;
+}
+
+.panel-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+  margin-bottom: 0.6rem;
+}
+
+.control-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover, .control-btn.active {
+  background: #FFFFFF;
+  color: #000000;
+}
